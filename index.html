@@ -120,7 +120,6 @@
       box-sizing: border-box;
       font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       -webkit-tap-highlight-color: transparent;
-      /* 어절 단위 자동 줄바꿈 설정 */
       word-break: keep-all;
       overflow-wrap: break-word;
     }
@@ -128,7 +127,7 @@
     body {
       background: var(--bg-gradient);
       margin: 0;
-      padding: 15px 10px;
+      padding: 12px 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -136,18 +135,18 @@
     }
 
     .theme-selector-bar {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background-color: rgba(255, 255, 255, 0.9);
-      padding: 6px 16px;
+      padding: 4px 12px;
       border-radius: 20px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     }
 
     .theme-selector-label {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 800;
       color: #333;
       white-space: nowrap;
@@ -156,8 +155,8 @@
     .theme-select {
       border: 1.5px solid #ccc;
       border-radius: 8px;
-      padding: 4px 8px;
-      font-size: 0.88rem;
+      padding: 2px 6px;
+      font-size: 0.82rem;
       font-weight: 700;
       outline: none;
       cursor: pointer;
@@ -168,15 +167,15 @@
       width: 100%;
       max-width: 760px;
       background-color: #fff;
-      border-radius: 20px;
-      padding: 24px 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      border-radius: 18px;
+      padding: 18px 14px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
       border: 3px solid var(--container-border);
     }
 
     .header {
       text-align: center;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .badge {
@@ -184,46 +183,50 @@
       background-color: var(--badge-bg);
       color: var(--badge-text);
       font-weight: 800;
-      font-size: 1rem;
-      padding: 6px 14px;
-      border-radius: 16px;
-      margin-bottom: 8px;
+      font-size: 0.88rem;
+      padding: 4px 10px;
+      border-radius: 14px;
+      margin-bottom: 6px;
       border: 1.5px dashed var(--badge-border);
-      word-break: keep-all;
     }
 
     .title {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: 900;
       color: var(--title-color);
       margin: 0;
       text-shadow: 1px 1px 0 var(--title-shadow);
       letter-spacing: -0.5px;
-      word-break: keep-all;
     }
 
     .info-card {
       background-color: var(--card-bg);
       border: 1.5px solid var(--card-border);
       border-radius: 12px;
-      padding: 12px 15px;
-      margin-top: 12px;
-      margin-bottom: 14px;
+      padding: 10px 12px;
+      margin-top: 10px;
+      margin-bottom: 12px;
       display: flex;
-      flex-direction: row;
-      justify-content: space-around;
+      flex-direction: column;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
 
     .info-row {
       display: flex;
       align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
       gap: 4px;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--text-sub);
+      width: 100%;
+    }
+
+    .info-group {
+      display: flex;
+      align-items: center;
       white-space: nowrap;
     }
 
@@ -235,9 +238,9 @@
     .info-input {
       border: none;
       border-bottom: 2px solid var(--accent-line);
-      width: 45px;
+      width: 35px;
       text-align: center;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 800;
       color: var(--text-main);
       outline: none;
@@ -246,22 +249,24 @@
     }
 
     .name-input {
-      width: 90px;
+      width: 75px;
     }
 
     .role-selection {
       display: flex;
-      gap: 14px;
+      gap: 10px;
       align-items: center;
+      justify-content: center;
       background-color: #fff;
-      padding: 5px 14px;
+      padding: 4px 12px;
       border-radius: 20px;
       border: 1px solid var(--container-border);
       white-space: nowrap;
+      margin-top: 2px;
     }
 
     .role-title {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 800;
       color: var(--text-sub);
     }
@@ -270,7 +275,7 @@
       display: flex;
       align-items: center;
       gap: 4px;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 700;
       color: var(--text-main);
       cursor: pointer;
@@ -278,8 +283,8 @@
 
     .role-option input[type="radio"] {
       appearance: none;
-      width: 16px;
-      height: 16px;
+      width: 15px;
+      height: 15px;
       border: 2px solid var(--accent-line);
       border-radius: 50%;
       outline: none;
@@ -294,8 +299,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       background-color: var(--text-main);
       border-radius: 50%;
     }
@@ -305,23 +310,22 @@
       align-items: center;
       background-color: var(--box-bg);
       border-radius: 12px;
-      padding: 10px 14px;
-      margin-bottom: 14px;
+      padding: 8px 12px;
+      margin-bottom: 12px;
       border: 1.5px solid var(--box-border);
-      gap: 12px;
+      gap: 10px;
     }
 
     .intro-icon {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       flex-shrink: 0;
     }
 
     .speech-bubble {
-      font-size: 0.88rem;
+      font-size: 0.82rem;
       color: var(--text-main);
       font-weight: 600;
-      line-height: 1.4;
-      word-break: keep-all;
+      line-height: 1.35;
     }
 
     .pledge-table {
@@ -331,16 +335,16 @@
       border: 1.5px solid var(--container-border);
       border-radius: 12px;
       overflow: hidden;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .pledge-table th {
       background-color: var(--table-th-bg);
       color: var(--text-main);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 800;
-      width: 20%;
-      padding: 10px 6px;
+      width: 22%;
+      padding: 8px 4px;
       border-bottom: 1px solid var(--card-border);
       border-right: 1.5px solid var(--container-border);
       text-align: center;
@@ -349,7 +353,7 @@
     }
 
     .pledge-table td {
-      padding: 6px 10px;
+      padding: 4px 8px;
       border-bottom: 1px solid var(--card-border);
       background-color: #fff;
     }
@@ -361,55 +365,52 @@
 
     .pledge-textarea {
       width: 100%;
-      height: 42px;
+      height: 38px;
       border: none;
       outline: none;
-      font-size: 0.92rem;
-      line-height: 1.4;
+      font-size: 0.88rem;
+      line-height: 1.35;
       color: #333;
       background: transparent;
       resize: none;
-      word-break: keep-all;
     }
 
     .speech-section-title {
-      font-size: 0.92rem;
+      font-size: 0.85rem;
       font-weight: 700;
       color: var(--text-sub);
       margin-bottom: 6px;
-      word-break: keep-all;
     }
 
     .speech-textarea {
       width: 100%;
-      height: 140px;
+      height: 120px;
       border: 1.5px solid var(--container-border);
       border-radius: 12px;
-      padding: 12px;
-      font-size: 0.92rem;
-      line-height: 1.5;
+      padding: 10px;
+      font-size: 0.88rem;
+      line-height: 1.45;
       color: #333;
       outline: none;
       resize: none;
       background-color: #fafafa;
-      word-break: keep-all;
     }
 
     .submit-btn-wrapper {
       text-align: center;
-      margin-top: 16px;
+      margin-top: 12px;
     }
 
     .submit-btn {
       background: var(--btn-gradient);
       color: #fff;
-      font-size: 1.05rem;
+      font-size: 0.98rem;
       font-weight: 800;
-      padding: 12px 30px;
+      padding: 10px 24px;
       border: none;
-      border-radius: 25px;
+      border-radius: 20px;
       cursor: pointer;
-      box-shadow: 0 4px 12px var(--btn-shadow);
+      box-shadow: 0 4px 10px var(--btn-shadow);
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -443,11 +444,10 @@
     }
 
     .modal-guide {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 800;
       color: #00838f;
       margin-bottom: 10px;
-      word-break: keep-all;
     }
 
     .modal-img {
@@ -465,10 +465,10 @@
     }
 
     .modal-close-btn, .modal-download-btn {
-      padding: 10px 16px;
-      font-size: 0.9rem;
+      padding: 8px 14px;
+      font-size: 0.85rem;
       font-weight: 700;
-      border-radius: 20px;
+      border-radius: 16px;
       border: none;
       cursor: pointer;
       white-space: nowrap;
@@ -507,9 +507,9 @@
 
     <div class="info-card">
       <div class="info-row">
-        ( <input type="text" class="info-input"> ) 학년 
-        ( <input type="text" class="info-input"> ) 반 
-        이름 : <input type="text" class="info-input name-input">
+        <div class="info-group">( <input type="text" class="info-input"> ) 학년</div>
+        <div class="info-group">( <input type="text" class="info-input"> ) 반</div>
+        <div class="info-group">이름 : <input type="text" class="info-input name-input"></div>
       </div>
       <div class="role-selection">
         <span class="role-title">지원 희망 :</span>
