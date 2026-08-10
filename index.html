@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>2학기 학급임원선거 후보 신청서</title>
   
-  <!-- Open Graph (카카오톡 링크 공유 카드 설정) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="2학기 학급임원선거 후보 신청서">
   <meta property="og:description" content="함께 만들고 신나게 자라는 우리 반 학급임원 신청서">
   <meta property="og:type" content="website">
 
   <!-- External CDN Libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   
   <style>
     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
@@ -120,43 +120,44 @@
       box-sizing: border-box;
       font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       -webkit-tap-highlight-color: transparent;
-      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+      /* 어절 단위 자동 줄바꿈 설정 */
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     body {
       background: var(--bg-gradient);
       margin: 0;
-      padding: 20px 10px 40px 10px;
+      padding: 15px 10px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       min-height: 100vh;
     }
 
     .theme-selector-bar {
-      margin-bottom: 20px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 8px 18px;
-      border-radius: 30px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      backdrop-filter: blur(5px);
+      gap: 8px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 6px 16px;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     }
 
     .theme-selector-label {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 800;
       color: #333;
+      white-space: nowrap;
     }
 
     .theme-select {
-      border: 2px solid #ccc;
-      border-radius: 12px;
-      padding: 6px 12px;
-      font-size: 0.95rem;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      padding: 4px 8px;
+      font-size: 0.88rem;
       font-weight: 700;
       outline: none;
       cursor: pointer;
@@ -165,18 +166,17 @@
 
     .container {
       width: 100%;
-      max-width: 210mm;
+      max-width: 760px;
       background-color: #fff;
-      border-radius: 24px;
-      padding: 35px 25px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      border: 4px solid var(--container-border);
-      margin: 0 auto;
+      border-radius: 20px;
+      padding: 24px 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      border: 3px solid var(--container-border);
     }
 
     .header {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
     .badge {
@@ -184,117 +184,108 @@
       background-color: var(--badge-bg);
       color: var(--badge-text);
       font-weight: 800;
-      font-size: 1.15rem;
-      padding: 8px 18px;
-      border-radius: 20px;
-      margin-bottom: 12px;
-      border: 2px dashed var(--badge-border);
+      font-size: 1rem;
+      padding: 6px 14px;
+      border-radius: 16px;
+      margin-bottom: 8px;
+      border: 1.5px dashed var(--badge-border);
+      word-break: keep-all;
     }
 
     .title {
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       font-weight: 900;
       color: var(--title-color);
       margin: 0;
-      text-shadow: 2px 2px 0 var(--title-shadow);
-      letter-spacing: -1px;
+      text-shadow: 1px 1px 0 var(--title-shadow);
+      letter-spacing: -0.5px;
+      word-break: keep-all;
     }
 
     .info-card {
       background-color: var(--card-bg);
-      border: 2px solid var(--card-border);
-      border-radius: 16px;
-      padding: 18px 20px;
-      margin-top: 20px;
-      margin-bottom: 25px;
+      border: 1.5px solid var(--card-border);
+      border-radius: 12px;
+      padding: 12px 15px;
+      margin-top: 12px;
+      margin-bottom: 14px;
       display: flex;
-      flex-direction: column;
-      gap: 15px;
+      flex-direction: row;
+      justify-content: space-around;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .info-row {
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 6px;
-      font-size: 1.15rem;
+      gap: 4px;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--text-sub);
+      white-space: nowrap;
     }
 
     input[type="text"], textarea {
       -webkit-appearance: none;
-      -moz-appearance: none;
       appearance: none;
-      border-radius: 0;
     }
 
     .info-input {
       border: none;
       border-bottom: 2px solid var(--accent-line);
-      width: 55px;
+      width: 45px;
       text-align: center;
-      font-size: 1.15rem;
+      font-size: 1rem;
       font-weight: 800;
       color: var(--text-main);
       outline: none;
       background: transparent;
-      padding: 0 2px 2px 2px;
-      margin: 0 2px;
+      padding: 0 2px;
     }
 
     .name-input {
-      width: 110px;
+      width: 90px;
     }
 
     .role-selection {
       display: flex;
-      gap: 20px;
+      gap: 14px;
       align-items: center;
-      justify-content: center;
       background-color: #fff;
-      padding: 8px 22px;
-      border-radius: 30px;
-      border: 1.5px solid var(--container-border);
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--container-border);
+      white-space: nowrap;
     }
 
     .role-title {
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 800;
       color: var(--text-sub);
-      margin-right: 5px;
     }
 
     .role-option {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 1.05rem;
+      gap: 4px;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--text-main);
       cursor: pointer;
-      user-select: none;
     }
 
     .role-option input[type="radio"] {
       appearance: none;
-      -webkit-appearance: none;
-      width: 20px;
-      height: 20px;
+      width: 16px;
+      height: 16px;
       border: 2px solid var(--accent-line);
       border-radius: 50%;
       outline: none;
       margin: 0;
       cursor: pointer;
       position: relative;
-      background-color: #fff;
-    }
-
-    .role-option input[type="radio"]:checked {
-      border-color: var(--text-main);
-      background-color: #fff;
     }
 
     .role-option input[type="radio"]:checked::after {
@@ -303,8 +294,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       background-color: var(--text-main);
       border-radius: 50%;
     }
@@ -313,29 +304,23 @@
       display: flex;
       align-items: center;
       background-color: var(--box-bg);
-      border-radius: 18px;
-      padding: 14px 20px;
-      margin-bottom: 25px;
-      border: 2px solid var(--box-border);
-      gap: 16px;
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      border: 1.5px solid var(--box-border);
+      gap: 12px;
     }
 
     .intro-icon {
-      font-size: 2.2rem;
+      font-size: 1.6rem;
       flex-shrink: 0;
     }
 
     .speech-bubble {
-      position: relative;
-      flex: 1;
-      background-color: #fff;
-      border: 2px solid var(--accent-line);
-      border-radius: 12px;
-      padding: 12px 16px;
-      font-size: 0.98rem;
+      font-size: 0.88rem;
       color: var(--text-main);
       font-weight: 600;
-      line-height: 1.5;
+      line-height: 1.4;
       word-break: keep-all;
     }
 
@@ -343,30 +328,30 @@
       width: 100%;
       border-collapse: separate;
       border-spacing: 0;
-      border: 2px solid var(--container-border);
-      border-radius: 16px;
+      border: 1.5px solid var(--container-border);
+      border-radius: 12px;
       overflow: hidden;
-      margin-bottom: 25px;
+      margin-bottom: 14px;
     }
 
     .pledge-table th {
       background-color: var(--table-th-bg);
       color: var(--text-main);
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       font-weight: 800;
-      width: 22%;
-      padding: 20px 8px;
+      width: 20%;
+      padding: 10px 6px;
       border-bottom: 1px solid var(--card-border);
-      border-right: 2px solid var(--container-border);
+      border-right: 1.5px solid var(--container-border);
       text-align: center;
       vertical-align: middle;
+      white-space: nowrap;
     }
 
     .pledge-table td {
-      padding: 10px 14px;
+      padding: 6px 10px;
       border-bottom: 1px solid var(--card-border);
       background-color: #fff;
-      vertical-align: top;
     }
 
     .pledge-table tr:last-child td,
@@ -376,64 +361,59 @@
 
     .pledge-textarea {
       width: 100%;
-      min-height: 75px;
+      height: 42px;
       border: none;
       outline: none;
-      font-size: 1rem;
-      line-height: 1.5;
+      font-size: 0.92rem;
+      line-height: 1.4;
       color: #333;
       background: transparent;
       resize: none;
+      word-break: keep-all;
     }
 
     .speech-section-title {
-      font-size: 1.05rem;
+      font-size: 0.92rem;
       font-weight: 700;
       color: var(--text-sub);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      margin-bottom: 6px;
+      word-break: keep-all;
     }
 
     .speech-textarea {
       width: 100%;
-      min-height: 280px;
-      border: 2px solid var(--container-border);
-      border-radius: 16px;
-      padding: 18px;
-      font-size: 1rem;
-      line-height: 1.6;
+      height: 140px;
+      border: 1.5px solid var(--container-border);
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 0.92rem;
+      line-height: 1.5;
       color: #333;
       outline: none;
       resize: none;
       background-color: #fafafa;
+      word-break: keep-all;
     }
 
     .submit-btn-wrapper {
       text-align: center;
-      margin-top: 30px;
+      margin-top: 16px;
     }
 
     .submit-btn {
       background: var(--btn-gradient);
       color: #fff;
-      font-size: 1.2rem;
+      font-size: 1.05rem;
       font-weight: 800;
-      padding: 15px 40px;
+      padding: 12px 30px;
       border: none;
-      border-radius: 30px;
+      border-radius: 25px;
       cursor: pointer;
-      box-shadow: 0 6px 15px var(--btn-shadow);
-      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px var(--btn-shadow);
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      -webkit-appearance: none;
-    }
-
-    .submit-btn:hover {
-      transform: translateY(-2px);
+      gap: 6px;
+      white-space: nowrap;
     }
 
     .img-modal {
@@ -446,7 +426,6 @@
       background-color: rgba(0, 0, 0, 0.85);
       z-index: 9999;
       padding: 20px 10px;
-      box-sizing: border-box;
       overflow-y: auto;
     }
 
@@ -456,18 +435,18 @@
 
     .modal-content {
       background-color: #fff;
-      max-width: 500px;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 16px;
+      max-width: 450px;
+      margin: 10px auto;
+      padding: 16px;
+      border-radius: 14px;
       text-align: center;
     }
 
     .modal-guide {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       font-weight: 800;
       color: #00838f;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       word-break: keep-all;
     }
 
@@ -476,43 +455,34 @@
       height: auto;
       border: 1px solid #ddd;
       border-radius: 8px;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
     .modal-btn-group {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       justify-content: center;
     }
 
     .modal-close-btn, .modal-download-btn {
-      padding: 12px 20px;
-      font-size: 1rem;
+      padding: 10px 16px;
+      font-size: 0.9rem;
       font-weight: 700;
-      border-radius: 25px;
+      border-radius: 20px;
       border: none;
       cursor: pointer;
-      -webkit-appearance: none;
+      white-space: nowrap;
     }
 
     .modal-download-btn {
       background-color: #4caf50;
       color: #fff;
       text-decoration: none;
-      display: inline-block;
     }
 
     .modal-close-btn {
       background-color: #eee;
       color: #333;
-    }
-
-    @media (max-width: 600px) {
-      body { padding: 10px 10px 30px 10px; }
-      .container { padding: 20px 15px; border-radius: 16px; }
-      .title { font-size: 1.7rem; }
-      .pledge-table th { width: 28%; font-size: 1rem; }
-      .submit-btn { width: 100%; justify-content: center; padding: 14px 20px; }
     }
   </style>
 </head>
@@ -537,9 +507,9 @@
 
     <div class="info-card">
       <div class="info-row">
-        ( <input type="text" class="info-input" aria-label="학년"> ) 학년 
-        ( <input type="text" class="info-input" aria-label="반"> ) 반 
-        이름 : <input type="text" class="info-input name-input" aria-label="이름">
+        ( <input type="text" class="info-input"> ) 학년 
+        ( <input type="text" class="info-input"> ) 반 
+        이름 : <input type="text" class="info-input name-input">
       </div>
       <div class="role-selection">
         <span class="role-title">지원 희망 :</span>
@@ -576,7 +546,7 @@
 
     <div class="speech-section">
       <div class="speech-section-title">
-        <span>⭐</span> 공약과 함께 나의 다짐을 정리하여 연설문을 완성해 봅시다.
+        ⭐ 공약과 함께 나의 다짐을 정리하여 연설문을 완성해 봅시다.
       </div>
       <textarea class="speech-textarea" placeholder="친구들 앞에서 발표할 연설문 내용을 자유롭게 작성해 봅시다."></textarea>
     </div>
@@ -591,12 +561,11 @@
   <div id="imageModal" class="img-modal">
     <div class="modal-content">
       <div class="modal-guide">
-        ✨ 신청서 이미지가 생성되었습니다!<br>
-        <span style="font-size: 0.9rem; color: #666; font-weight: normal;">이미지를 <b>길게 누르면 저장</b>하거나 아래 저장 버튼을 누르세요.</span>
+        ✨ 신청서 이미지가 생성되었습니다!
       </div>
       <img id="resultImage" class="modal-img" alt="신청서 이미지">
       <div class="modal-btn-group">
-        <a id="downloadLink" class="modal-download-btn" download="학급임원선거_신청서.png">📥 이미지 저장</a>
+        <a id="downloadLink" class="modal-download-btn" download="학급임원선거_신청서.png">📥 저장하기</a>
         <button class="modal-close-btn" onclick="closeModal()">닫기</button>
       </div>
     </div>
@@ -607,46 +576,34 @@
       document.body.setAttribute("data-theme", themeName);
     }
 
-    document.querySelectorAll(".pledge-textarea, .speech-textarea").forEach(textarea => {
-      textarea.addEventListener("input", function () {
-        this.style.height = "auto";
-        this.style.height = (this.scrollHeight + 5) + "px";
-      });
-    });
-
     function submitAndCapture() {
       const formElement = document.getElementById("application-form");
       const submitBtn = document.querySelector(".submit-btn");
       const originalText = submitBtn.innerHTML;
 
-      submitBtn.innerHTML = "<span>⏳ 이미지 만드는 중...</span>";
+      submitBtn.innerHTML = "<span>⏳ 이미지 생성 중...</span>";
 
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          html2canvas(formElement, {
-            scale: 2,
-            useCORS: true,
-            allowTaint: true,
-            backgroundColor: "#ffffff",
-            logging: false
-          }).then(canvas => {
-            const imageDataUrl = canvas.toDataURL("image/png");
-            const modal = document.getElementById("imageModal");
-            const resultImg = document.getElementById("resultImage");
-            const downloadLink = document.getElementById("downloadLink");
+      setTimeout(() => {
+        html2canvas(formElement, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: "#ffffff"
+        }).then(canvas => {
+          const imageDataUrl = canvas.toDataURL("image/png");
+          const modal = document.getElementById("imageModal");
+          const resultImg = document.getElementById("resultImage");
+          const downloadLink = document.getElementById("downloadLink");
 
-            resultImg.src = imageDataUrl;
-            downloadLink.href = imageDataUrl;
-            modal.classList.add("active");
+          resultImg.src = imageDataUrl;
+          downloadLink.href = imageDataUrl;
+          modal.classList.add("active");
 
-            submitBtn.innerHTML = originalText;
-          }).catch(err => {
-            console.error("이미지 생성 실패:", err);
-            alert("이미지 생성 중 오류가 발생했습니다.");
-            submitBtn.innerHTML = originalText;
-          });
-        }, 50);
-      });
+          submitBtn.innerHTML = originalText;
+        }).catch(err => {
+          alert("이미지 생성 중 오류가 발생했습니다.");
+          submitBtn.innerHTML = originalText;
+        });
+      }, 100);
     }
 
     function closeModal() {
