@@ -120,8 +120,8 @@
       box-sizing: border-box;
       font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       -webkit-tap-highlight-color: transparent;
-      word-break: break-all;
-      overflow-wrap: anywhere;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     body {
@@ -589,12 +589,45 @@
 
       submitBtn.innerHTML = "<span>⏳ 이미지 생성 중...</span>";
 
+      // html2canvas 캡처 시 textarea 글자 잘림 방지 로직
+      const textareas = formElement.querySelectorAll("textarea");
+      const replacementDivs = [];
+
+      textareas.forEach(ta => {
+        const div = document.createElement("div");
+        div.style.width = ta.offsetWidth + "px";
+        div.style.height = ta.offsetHeight + "px";
+        div.style.padding = window.getComputedStyle(ta).padding;
+        div.style.fontSize = window.getComputedStyle(ta).fontSize;
+        div.style.fontFamily = window.getComputedStyle(ta).fontFamily;
+        div.style.lineHeight = window.getComputedStyle(ta).lineHeight;
+        div.style.color = window.getComputedStyle(ta).color;
+        div.style.backgroundColor = window.getComputedStyle(ta).backgroundColor;
+        div.style.border = window.getComputedStyle(ta).border;
+        div.style.borderRadius = window.getComputedStyle(ta).borderRadius;
+        div.style.whiteSpace = "pre-wrap";
+        div.style.wordBreak = "break-all";
+        div.style.overflowWrap = "anywhere";
+        div.style.boxSizing = "border-box";
+        div.innerText = ta.value;
+
+        ta.style.display = "none";
+        ta.parentNode.insertBefore(div, ta);
+        replacementDivs.push({ ta, div });
+      });
+
       setTimeout(() => {
         html2canvas(formElement, {
           scale: 2,
           useCORS: true,
           backgroundColor: "#ffffff"
         }).then(canvas => {
+          // 원복 작업
+          replacementDivs.forEach(item => {
+            item.ta.style.display = "";
+            item.div.remove();
+          });
+
           const imageDataUrl = canvas.toDataURL("image/png");
           const modal = document.getElementById("imageModal");
           const resultImg = document.getElementById("resultImage");
@@ -606,10 +639,14 @@
 
           submitBtn.innerHTML = originalText;
         }).catch(err => {
+          replacementDivs.forEach(item => {
+            item.ta.style.display = "";
+            item.div.remove();
+          });
           alert("이미지 생성 중 오류가 발생했습니다.");
           submitBtn.innerHTML = originalText;
         });
-      }, 100);
+      }, 150);
     }
 
     function closeModal() {
